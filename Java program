@@ -1,5 +1,23 @@
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/GaneshTaddi-Devops/Java-program.git'
+            }
+        }
+
+        stage('Compile Java') {
+            steps {
+                sh 'javac HelloWorld.java'
+            }
+        }
+
+        stage('Run Program') {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
     }
 }
